@@ -54,29 +54,19 @@
             </TextBox>
         </StackPanel>
 
-        <!--Ukryte - dodaj listę button-->
-        <!--<StackPanel Grid.Row="2" 
-              x:Name="GridForAddListButton" 
-              Margin="0,-20,0,0">
-            <Button x:Name="AddNewListButton" Visibility="Collapsed"></Button>-->
-        <!--</StackPanel>-->
         <!--ContentPanel contains LongListSelector and LongListSelector ItemTemplate. Place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="2" Margin="12,0,12,0">
-            <!--<Button Width="200" 
-                    Height="100">
-            </Button>-->
             
             <phone:LongListSelector x:Name="MainLongListSelector"
                                     Margin="0,0,-12,0" 
                                     ItemsSource="{Binding}" 
                                     SelectionChanged="MainLongListSelector_SelectionChanged"
                                     Background="White">
-                
+
                 <phone:LongListSelector.ItemTemplate>
                     
                     <DataTemplate>
                         <StackPanel Margin="0,0,0,17">
-                            
                             
                           <toolkit:ContextMenuService.ContextMenu>
                                 <toolkit:ContextMenu Background="Black" IsZoomEnabled="True" Name="ContextMenu">

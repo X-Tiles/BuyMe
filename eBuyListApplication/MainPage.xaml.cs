@@ -141,9 +141,9 @@ namespace eBuyListApplication
 
         private void AddTextBoxForAddingNewList()
         {
-            AddNewListTextBox.Height = 100;
+            AddNewListTextBox.Height = 80;
             AddNewListTextBox.BorderBrush = new SolidColorBrush(Colors.Black);
-            AddNewListTextBox.FontSize = 20;
+            AddNewListTextBox.FontSize = 30;
             AddNewListTextBox.Visibility = Visibility.Visible;
             AddNewListTextBox.Focus();
         }

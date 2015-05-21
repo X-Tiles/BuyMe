@@ -25,94 +25,13 @@ namespace eBuyListApplication
         public DetailsPage()
         {
             InitializeComponent();
-
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
         }
 
-        // When page is navigated to set data context to selected item in list
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //if (DataContext == null)
-            //{
-            //    string selectedIndex = "";
-            //    if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
-            //    {
-            //        int index = int.Parse(selectedItem);
-            //        TitlePanel.DataContext = manager.GetListByIndex(index);
 
-            //    }
-            //}
-
-            string selectedIndex = "";
-
-            NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex);
-
-            int index = int.Parse(selectedIndex);
-            TitlePanel.DataContext = MainPage.Manager.GetListByIndex(index);
-
-            DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(index).Products;
-
-        }
-
-
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
-
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
-
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
-
-        private void AddProductApplicationBarIconButton_OnClick(object sender, EventArgs e)
-        {
-            AddNewProductTextBox.Text = "";
-
-            AddNewProductTextBox.Height = 100;
-            AddNewProductTextBox.BorderBrush = new SolidColorBrush(Colors.Black);
-            AddNewProductTextBox.FontSize = 20;
-
-            AddNewProductButton.Height = 70;
-            AddNewProductButton.Content = "Dodaj produkt";
-            AddNewProductButton.Background = new SolidColorBrush(Colors.DarkGray);
-
-            AddNewProductTextBox.Visibility = Visibility.Visible;
-            AddNewProductButton.Visibility = Visibility.Visible;
-
-            //AddNewProductButton.Click += AddNewProductButton_Click;
-        }
-
-        void AddNewProductButton_Click(object sender, RoutedEventArgs e)
-        {
-            string selectedIndex;
-            NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex);
-            int listId = int.Parse(selectedIndex);
-
-            MainPage.Manager.AddNewProductToList(listId, AddNewProductTextBox.Text);
-            DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(listId).Products;
-
-            AddNewProductTextBox.Visibility = Visibility.Collapsed;
-            AddNewProductButton.Visibility = Visibility.Collapsed;
-        }
-
-        private void AddNewProductTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (AddNewProductTextBox.Text == "")
-                return;
-            
-            SearchProductComboBox.Visibility = Visibility.Visible;
-            //SearchProductComboBox.Height = 200;
-
-            SearchProductComboBox.DataContext = Products.GetProductsByNamePattern(AddNewProductTextBox.Text);
+            TitlePanel.DataContext = MainPage.Manager.GetListByIndex(SelectedListId());
+            DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
 
         }
 
@@ -125,18 +44,13 @@ namespace eBuyListApplication
         {
 
             var item = (sender as MenuItem).DataContext;
-
             var productToRemove = (item as ListProductItem);
 
-            string selectedIndex;
-            NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex);
-            int index = int.Parse(selectedIndex);
-
-            MainPage.Manager.RemoveProduct(index, productToRemove);
+            MainPage.Manager.RemoveProduct(SelectedListId(), productToRemove);
 
             //NOTE:Wbrew pozorom to ma sens:) 
             DetailsLongListSelector.DataContext = null;
-            DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(index).Products;
+            DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
         }
 
         private void ProductTextBlock_OnTap(object sender, GestureEventArgs e)
@@ -145,57 +59,20 @@ namespace eBuyListApplication
             var item = (sender as TextBlock).DataContext;
             ListProductItem productToBuy = (item as ListProductItem);
 
-            string selectedIndex = "";
-            NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex);
-            int index = int.Parse(selectedIndex);
             bool isBought = productToBuy.IsBought;
 
             if (isBought == true)
             {
-                MainPage.Manager.ChangeProductState(index, productToBuy, false);
-                
+                MainPage.Manager.ChangeProductState(SelectedListId(), productToBuy, false);              
             }
 
             else
             {
-                MainPage.Manager.ChangeProductState(index, productToBuy, true);
+                MainPage.Manager.ChangeProductState(SelectedListId(), productToBuy, true);
             }
 
             DetailsLongListSelector.DataContext = null;
-            DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(index).Products;
-        }
-
-        private void SearchProductComboBox_OnTap(object sender, GestureEventArgs e)
-        {
-            //AddNewProductTextBox.Text = SearchProductComboBox.SelectedItem.ToString();
-
-        }
-
-        private void SearchProductComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-
-            var product = SearchProductComboBox.SelectedValue as Product;
-            if (product == null)
-                return;
-
-            SearchProductComboBox.Foreground = new SolidColorBrush(Colors.Green);
-
-            string selectedIndex = "";
-            NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex);
-            int index = int.Parse(selectedIndex);
-
-            MainPage.Manager.AddNewProductToList(index,product);
-
-            SearchProductComboBox.Visibility = System.Windows.Visibility.Collapsed;
-
-            DetailsLongListSelector.DataContext = null;
-            DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(index).Products;
-
-            AddNewProductTextBox.Text = "";
-            AddNewProductTextBox.Visibility = Visibility.Collapsed;
-            AddNewProductButton.Visibility = Visibility.Collapsed;
-
+            DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
         }
 
         private void IsBoughtToogle_OnLoaded(object sender, RoutedEventArgs e)
@@ -222,6 +99,86 @@ namespace eBuyListApplication
         {
             (sender as ToggleSwitch).Content = "Do kupienia";
         }
+
+        private void AddProductAppBarIconButton_Click(object sender, EventArgs e)
+        {
+            SearchAutoCompleteBox.Text = "";
+
+            SearchAutoCompleteBox.Height = 80;
+            SearchAutoCompleteBox.BorderBrush = new SolidColorBrush(Colors.Black);
+            SearchAutoCompleteBox.FontSize = 30;
+
+            SearchAutoCompleteBox.Focus();
+            SearchAutoCompleteBox.Visibility = Visibility.Visible;
+            TitlePanel.Visibility = System.Windows.Visibility.Collapsed;
+            AddBarButton().IsEnabled = false;
+            ContentPanel.Opacity = 0.15;
+        }
+
+        private void ConfirmAddingProductAppBarIconButton_Click(object sender, EventArgs e)
+        {
+
+            if (SearchAutoCompleteBox.SelectedItem != null)
+            {
+
+                MainPage.Manager.AddNewProductToList(SelectedListId(), SearchAutoCompleteBox.SelectedItem.ToString());
+            }
+
+            else
+            {
+                MainPage.Manager.AddNewProductToList(SelectedListId(), SearchAutoCompleteBox.Text);
+
+            }
+
+            DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
+            SearchAutoCompleteBox.Visibility = Visibility.Collapsed;
+            TitlePanel.Visibility = System.Windows.Visibility.Visible;
+            DetailsLongListSelector.Focus();
+            ConfirmBarButton().IsEnabled = false;
+            AddBarButton().IsEnabled = true;
+            ContentPanel.Opacity = 1;
+        }
+
+        private void SearchAutoCompleteBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            SearchAutoCompleteBox.ItemsSource = Products.GetProductsByNamePattern(SearchAutoCompleteBox.Text);
+
+            if (SearchAutoCompleteBox.Text != "")
+            {
+                ConfirmBarButton().IsEnabled = true;
+            }
+
+            else
+            {
+                ConfirmBarButton().IsEnabled = false;
+            }
+
+
+        }
+
+
+
+
+        private int SelectedListId()
+        {
+            string selectedIndex;
+            NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex);
+            int listId = int.Parse(selectedIndex);
+            return listId;
+        }
+
+        private ApplicationBarIconButton AddBarButton()
+        {
+            ApplicationBarIconButton button = (ApplicationBarIconButton)ApplicationBar.Buttons[0];
+            return button;
+        }
+
+        private ApplicationBarIconButton ConfirmBarButton()
+        {
+            ApplicationBarIconButton button = (ApplicationBarIconButton)ApplicationBar.Buttons[1];
+            return button;
+        }
+
     }
 
 }
