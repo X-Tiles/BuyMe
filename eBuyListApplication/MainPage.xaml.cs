@@ -13,6 +13,11 @@ namespace eBuyListApplication
 {
     public partial class MainPage
     {
+
+        #region EventHandlers
+
+        public EBuyList ChangeListName { get; set; }
+
         public static EBuyListsManager Manager = new EBuyListsManager();
 
         public MainPage()
@@ -57,26 +62,37 @@ namespace eBuyListApplication
 
         void ConfirmAddingListAppBarButton_Click(object sender, EventArgs e)
         {
+            if (ChangeListName == null)
+            {
+                //(sender as ApplicationBarIconButton).IsEnabled = true;
+                var newListIndex = Manager.AddNewList(AddNewListTextBox.Text);
+                NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + newListIndex, UriKind.Relative));
+                AddNewListTextBox.Text = "";
+                AddNewListTextBox.Visibility = Visibility.Collapsed;
+                
+                AddBarButton().IsEnabled = true;
+            }
 
-                if (AddNewListTextBox.Text != "")
-                {
-                    (sender as ApplicationBarIconButton).IsEnabled = true;
-                    var newListIndex = Manager.AddNewList(AddNewListTextBox.Text);
-                    NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + newListIndex, UriKind.Relative));
-                    AddNewListTextBox.Text = "";
-                    AddNewListTextBox.Visibility = Visibility.Collapsed;
-                    AddBarButton().IsEnabled = true;
-                }
-                else
-                {
-                    return;
-                }
+            else
+            { 
+                ChangeListName.Name = AddNewListTextBox.Text;
+                MainLongListSelector.DataContext = null;
+                MainLongListSelector.DataContext = Manager.GetAllLists();
+                AddNewListTextBox.Text = "";
+                AddNewListTextBox.Visibility = Visibility.Collapsed;
+                AddBarButton().IsEnabled = true;
+                ChangeListName = null;
+            }
 
         }
 
         private void Edit_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var list = (sender as MenuItem).DataContext;
+            ChangeListName = (list as EBuyList);
+            AddTextBoxForAddingNewList();
+            AddBarButton().IsEnabled = false;
+
         }
 
         private void Delete_OnClick(object sender, RoutedEventArgs e)
@@ -118,7 +134,10 @@ namespace eBuyListApplication
             }
         }
 
+        #endregion
 
+
+        #region HelperMethods
 
         private void AddTextBoxForAddingNewList()
         {
@@ -126,6 +145,7 @@ namespace eBuyListApplication
             AddNewListTextBox.BorderBrush = new SolidColorBrush(Colors.Black);
             AddNewListTextBox.FontSize = 20;
             AddNewListTextBox.Visibility = Visibility.Visible;
+            AddNewListTextBox.Focus();
         }
 
         private ApplicationBarIconButton AddBarButton()
@@ -139,5 +159,7 @@ namespace eBuyListApplication
             ApplicationBarIconButton button = (ApplicationBarIconButton)ApplicationBar.Buttons[1];
             return button;
         }
+
+        #endregion
     }
 }
