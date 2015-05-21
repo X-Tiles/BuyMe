@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<BuyLists>
+  <BuyList Id="1" Name="Bieżąca" SortMethod="USER">
+    <Products>
+      <Product ProductId="BREAD" ProductCategoryId="BREAD" Count="2" Unit="COUNT" IsBought="False"/>
+      <Product ProductId="ROOLS" ProductCategoryId="BREAD" Count="4" Unit="COUNT" IsBought="False"/>
+      <Product ProductId="MILK" ProductCategoryId="DAIRY_PRODUCTS" Count="1" Unit="COUNT" IsBought="False"/>
+      <Product ProductId="BUTTER" ProductCategoryId="DAIRY_PRODUCTS" Count="1" Unit="COUNT" IsBought="False"/>
+      <Product ProductId="CHESSE" ProductCategoryId="DAIRY_PRODUCTS" Count="300" Unit="DECAGRAM" IsBought="False"/>
+      <Product ProductId="CHIPS" ProductCategoryId="SNACKS" Count="2" Unit="COUNT" IsBought="False"/>
+      <Product ProductId="OTHER" ProductCategoryId="OFFICE" Name="ramka do zdjęć" Count="2" Unit="COUNT" IsBought="False"/>
+      <Product ProductId="CHOCOLATE" ProductCategoryId="USER" CategoryId="1" Count="1" Unit="COUNT" IsBought="False"/>
+    </Products>
+  </BuyList>
+  <BuyList Id="2" Name="Tygodniowa" SortMethod="USER">
+    <Products>
+      <Product ProductId="MINERAL_WATER" ProductCategoryId="DRINKS" Name="Woda mineralna" Count="10" Unit="COUNT" IsBought="False"/>
+      <Product ProductId="CIGARETTES" ProductCategoryId="ALCOHOL_TOBACCO" Count="7" Unit="COUNT" IsBought="true"/>
+      <Product ProductId="OTHER" ProductCategoryId="DRINKS" Name="sok pomarańczowy" Count="3" Unit="COUNT" IsBought="False"/>
+      <Product ProductId="PASTA" ProductCategoryId="FOODSTUFFS" Count="3" Unit="COUNT" IsBought="False"/>
+      <Product ProductId="POTATOES" ProductCategoryId="VEGETABLES_FRUITS" Count="2" Unit="KILOGRAM" IsBought="False"/>
+      <Product ProductId="OTHER" ProductCategoryId="OTHER" Name="pilot do telewizora" Count="1" Unit="COUNT" IsBought="False"/>
+    </Products>
+  </BuyList>
+</BuyLists>

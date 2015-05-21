@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Products>
+  <Product ProductId="BREAD" ProductCategoryId="BREAD" Name="Chleb"/>
+  <Product ProductId="ROOLS" ProductCategoryId="BREAD" Name="Bułki"/>
+  <Product ProductId="BAGUETTE" ProductCategoryId="BREAD" Name="Bagietki"/>
+  <Product ProductId="CRUMBS" ProductCategoryId="BREAD" Name="Bułka tarta"/>
+  <Product ProductId="BUN" ProductCategoryId="BREAD" Name="Drożdżówki"/>
+  <Product ProductId="PASTA" ProductCategoryId="FOODSTUFFS" Name="Makaron"/>
+  <Product ProductId="POPPY_SEED" ProductCategoryId="FOODSTUFFS" Name="Mak"/>
+  <Product ProductId="FLOUR" ProductCategoryId="FOODSTUFFS" Name="Mąka"/>
+  <Product ProductId="RAISINS" ProductCategoryId="FOODSTUFFS" Name="Rodzynki"/>
+  <Product ProductId="BAKING_POWDER" ProductCategoryId="FOODSTUFFS" Name="Proszek do pieczenia"/>
+  <Product ProductId="ELASTIC_BANDAGE" ProductCategoryId="PHARMACY" Name="Bandaż elastyczny"/>
+  <Product ProductId="PAINKILLERS" ProductCategoryId="PHARMACY" Name="Tabletki przeciwbólowe"/>
+  <Product ProductId="HYDROGEN_PEROXIDE" ProductCategoryId="PHARMACY" Name="Woda utleniona"/>
+  <Product ProductId="SLICES_DRESSINGS" ProductCategoryId="PHARMACY" Name="Plastry opatrunkowe"/>
+  <Product ProductId="EXERCISE_BOOK" ProductCategoryId="OFFICE" Name="Zeszyt"/>
+  <Product ProductId="PENS" ProductCategoryId="OFFICE" Name="Długopisy"/>
+  <Product ProductId="PENCIL" ProductCategoryId="OFFICE" Name="Ołówek"/>
+  <Product ProductId="STAPLER" ProductCategoryId="OFFICE" Name="Zszywacz"/>
+  <Product ProductId="PENCIL_SHARPENER" ProductCategoryId="OFFICE" Name="Temperówka"/>
+  <Product ProductId="GLUE_OFFICE" ProductCategoryId="OFFICE" Name="Klej biurowy"/>
+  <Product ProductId="RUBBER" ProductCategoryId="OFFICE" Name="Gumka do mazania"/>
+  <Product ProductId="NEWSPAPER" ProductCategoryId="BOOKSTORE" Name="Gazeta"/>
+  <Product ProductId="CD_RECORD" ProductCategoryId="BOOKSTORE" Name="Płyta CD"/>
+  <Product ProductId="BOOK" ProductCategoryId="BOOKSTORE" Name="Książka"/>
+  <Product ProductId="TIRES" ProductCategoryId="AUTOMOTIVE" Name="Opony"/>
+  <Product ProductId="WASHER_FLUID" ProductCategoryId="AUTOMOTIVE" Name="Płyn do spryskiwaczy"/>
+  <Product ProductId="ENGINE_OIL" ProductCategoryId="AUTOMOTIVE" Name="Olej silnikowy"/>
+  <Product ProductId="BULBS" ProductCategoryId="AUTOMOTIVE" Name="Żarówki samochodowe"/>
+  <Product ProductId="WIPERS" ProductCategoryId="AUTOMOTIVE" Name="Wycieraczki"/>
+  <Product ProductId="BICYCLE" ProductCategoryId="RECREATION_SPORT" Name="Rower"/>
+  <Product ProductId="HELMET" ProductCategoryId="RECREATION_SPORT" Name="Kask"/>
+  <Product ProductId="WATER_BOTTLE" ProductCategoryId="RECREATION_SPORT" Name="Bidon na wodę"/>
+  <Product ProductId="BALL" ProductCategoryId="RECREATION_SPORT" Name="Piłka"/>
+  <Product ProductId="TENNIS_RACKET" ProductCategoryId="RECREATION_SPORT" Name="Rakieta tenisowa"/>
+  <Product ProductId="BACKPACK" ProductCategoryId="RECREATION_SPORT" Name="Plecak"/>
+  <Product ProductId="TROUSERS" ProductCategoryId="CLOTHES" Name="Spodnie"/>
+  <Product ProductId="JACKET" ProductCategoryId="CLOTHES" Name="Kurtka"/>
+  <Product ProductId="SOCKS" ProductCategoryId="CLOTHES" Name="Skarpetki"/>
+  <Product ProductId="TIGHTS" ProductCategoryId="CLOTHES" Name="Rajstopy"/>
+  <Product ProductId="TSHIRT" ProductCategoryId="CLOTHES" Name="Koszulka"/>
+  <Product ProductId="SHIRT" ProductCategoryId="CLOTHES" Name="Koszula"/>
+  <Product ProductId="DRESS" ProductCategoryId="CLOTHES" Name="Sukienka"/>
+  <Product ProductId="SHOES" ProductCategoryId="CLOTHES" Name="Buty"/>
+  <Product ProductId="FODDER" ProductCategoryId="ANIMAL" Name="Karma"/>
+  <Product ProductId="GRIT" ProductCategoryId="ANIMAL" Name="Żwirek"/>
+  <Product ProductId="ANIMAL_SHAMPOO" ProductCategoryId="ANIMAL" Name="Szampon DLA PSA"/>
+  <Product ProductId="TOYS" ProductCategoryId="ANIMAL" Name="Zabawki"/>
+  <Product ProductId="PACIFIERS" ProductCategoryId="CHILDREN" Name="Smoczek"/>
+  <Product ProductId="PACIFIERS_BOTTLE" ProductCategoryId="CHILDREN" Name="Smoczek na butelkę"/>
+  <Product ProductId="BABY_BOTTLE" ProductCategoryId="CHILDREN" Name="Butelka dziecięca"/>
+  <Product ProductId="NON_SPILL_CUP" ProductCategoryId="CHILDREN" Name="Kubek niekapek"/>
+  <Product ProductId="TEETHER" ProductCategoryId="CHILDREN" Name="Gryzak"/>
+  <Product ProductId="BIB" ProductCategoryId="CHILDREN" Name="Śliniak"/>
+  <Product ProductId="POTTY" ProductCategoryId="CHILDREN" Name="Nocnik"/>
+  <Product ProductId="DIAPERS" ProductCategoryId="CHILDREN" Name="Pieluchy"/>
+  <Product ProductId="WIPES" ProductCategoryId="CHILDREN" Name="Chusteczki nawilżające"/>
+  <Product ProductId="SLEEPERS" ProductCategoryId="CHILDREN" Name="Śpiochy"/>
+  <Product ProductId="MILK_POWDER" ProductCategoryId="CHILDREN" Name="Mleko w proszku"/>
+  <Product ProductId="PORRIDGE" ProductCategoryId="CHILDREN" Name="Kaszka"/>
+  <Product ProductId="GRUEL" ProductCategoryId="CHILDREN" Name="Kleik"/>
+  <Product ProductId="DUSTING" ProductCategoryId="CHILDREN" Name="Zasypka"/>
+  <Product ProductId="BABY_LOTION" ProductCategoryId="CHILDREN" Name="Balsam do ciała"/>
+  <Product ProductId="SKIN_CREAM" ProductCategoryId="CHILDREN" Name="Krem ochronny"/>
+  <Product ProductId="SHAMPOO" ProductCategoryId="COSMETICS" Name="Szampon do włosów"/>
+  <Product ProductId="HAIR_CONDITIONER" ProductCategoryId="COSMETICS" Name="Odżywka do włosów"/>
+  <Product ProductId="SOAP" ProductCategoryId="COSMETICS" Name="Mydło"/>
+  <Product ProductId="SHOWER_GEL" ProductCategoryId="COSMETICS" Name="Żel pod prysznic"/>
+  <Product ProductId="AFTERSHAVE" ProductCategoryId="COSMETICS" Name="Płyn po goleniu"/>
+  <Product ProductId="BODY_LOTION" ProductCategoryId="COSMETICS" Name="Balsam do ciała"/>
+  <Product ProductId="MINERAL_WATER" ProductCategoryId="DRINKS" Name="Woda mineralna"/>
+  <Product ProductId="JUICE" ProductCategoryId="DRINKS" Name="Sok w kartonie"/>
+  <Product ProductId="CARBONATED_DRINKS" ProductCategoryId="DRINKS" Name="Napoje gazowane"/>
+  <Product ProductId="ONE_DAY_JUICE" ProductCategoryId="DRINKS" Name="Sok jednodniowy"/>
+  <Product ProductId="ICE_CREAM" ProductCategoryId="FROZEN" Name="Lody"/>
+  <Product ProductId="VEGETABLES" ProductCategoryId="FROZEN" Name="Warzywa"/>
+  <Product ProductId="CHINESE" ProductCategoryId="FROZEN" Name="Mrożonka Chińska"/>
+  <Product ProductId="BLUEBERRIES" ProductCategoryId="FROZEN" Name="Jagody"/>
+  <Product ProductId="STRAWBERRIES" ProductCategoryId="FROZEN" Name="Truskawki"/>
+  <Product ProductId="BEER" ProductCategoryId="ALCOHOL_TOBACCO" Name="Piwo"/>
+  <Product ProductId="WINE" ProductCategoryId="ALCOHOL_TOBACCO" Name="Wino"/>
+  <Product ProductId="VODKA" ProductCategoryId="ALCOHOL_TOBACCO" Name="Wódka"/>
+  <Product ProductId="CIGARETTES" ProductCategoryId="ALCOHOL_TOBACCO" Name="Papierosy"/>
+  <Product ProductId="CIGAR" ProductCategoryId="ALCOHOL_TOBACCO" Name="Cygaro"/>
+  <Product ProductId="STICKS" ProductCategoryId="SNACKS" Name="Paluszki"/>
+  <Product ProductId="CHIPS" ProductCategoryId="SNACKS" Name="Chipsy"/>
+  <Product ProductId="CRACKERS" ProductCategoryId="SNACKS" Name="Krakersy"/>
+  <Product ProductId="POPCORN" ProductCategoryId="SNACKS" Name="Popcorn"/>
+  <Product ProductId="CRUNCHY" ProductCategoryId="SNACKS" Name="Chrupki"/>
+  <Product ProductId="RICE_CAKES" ProductCategoryId="SNACKS" Name="Wafle ryżowe"/>
+  <Product ProductId="PEANUTS" ProductCategoryId="SNACKS" Name="Orzeszki ziemne"/>
+  <Product ProductId="SALMON" ProductCategoryId="FISH_SEAFOOD" Name="Łosoś"/>
+  <Product ProductId="HERRING" ProductCategoryId="FISH_SEAFOOD" Name="Śledź"/>
+  <Product ProductId="HAKE" ProductCategoryId="FISH_SEAFOOD" Name="Dorsz"/>
+  <Product ProductId="SHRIMP" ProductCategoryId="FISH_SEAFOOD" Name="Krewetki"/>
+  <Product ProductId="MUSSELS" ProductCategoryId="FISH_SEAFOOD" Name="Małże"/>
+  <Product ProductId="SQUID" ProductCategoryId="FISH_SEAFOOD" Name="Kalmary"/>
+  <Product ProductId="OCTOPUS" ProductCategoryId="FISH_SEAFOOD" Name="Ośmiornica"/>
+  <Product ProductId="PORK" ProductCategoryId="MEAT" Name="Wieprzowina"/>
+  <Product ProductId="BEEF" ProductCategoryId="MEAT" Name="Wołowina"/>
+  <Product ProductId="VEAL" ProductCategoryId="MEAT" Name="Cielęcina"/>
+  <Product ProductId="CHICKEN" ProductCategoryId="MEAT" Name="Kurczak"/>
+  <Product ProductId="TURKEY" ProductCategoryId="MEAT" Name="Indyk"/>
+  <Product ProductId="HAM" ProductCategoryId="SAUSAGE" Name="Szynka"/>
+  <Product ProductId="SAUSAGES" ProductCategoryId="SAUSAGE" Name="Kiełbasa"/>
+  <Product ProductId="FRANKFURTERS" ProductCategoryId="SAUSAGE" Name="Parówki"/>
+  <Product ProductId="PIE" ProductCategoryId="SAUSAGE" Name="Pasztet"/>
+  <Product ProductId="SALAMI" ProductCategoryId="SAUSAGE" Name="Salami"/>
+  <Product ProductId="BATTERIES" ProductCategoryId="HOUSE_GARDEN" Name="Baterie"/>  
+  <Product ProductId="LIGHT_BULBS" ProductCategoryId="HOUSE_GARDEN" Name="Żarówki"/>  
+  <Product ProductId="GARBAGE_BAGS" ProductCategoryId="HOUSE_GARDEN" Name="Worki na śmieci"/>
+  <Product ProductId="SPONGE" ProductCategoryId="HOUSE_GARDEN" Name="Gąbka do naczyń"/>
+  <Product ProductId="WASHING_POWDER" ProductCategoryId="CLEANING" Name="Proszek do prania"/>
+  <Product ProductId="Window_CLEANING" ProductCategoryId="CLEANING" Name="Płyn do mycia okien"/>
+  <Product ProductId="FLOOR_CLEANER" ProductCategoryId="CLEANING" Name="Płyn do podłóg"/>
+  <Product ProductId="PROTECTIVE_GLOVES" ProductCategoryId="CLEANING" Name="Rękawiczki ochronne"/>
+  <Product ProductId="CANNED_PEAS" ProductCategoryId="CANNED" Name="Groszek konserwowy"/>
+  <Product ProductId="CANNED_CORN" ProductCategoryId="CANNED" Name="Kukurydza konserwowa"/>
+  <Product ProductId="CANNED_SARDINES" ProductCategoryId="CANNED" Name="Sardynki w puszce"/>
+  <Product ProductId="CANNED_PINEAPLE" ProductCategoryId="CANNED" Name="Ananas w puszce"/>
+  <Product ProductId="MILK" ProductCategoryId="DAIRY_PRODUCTS" Name="Mleko"/>
+  <Product ProductId="BUTTER" ProductCategoryId="DAIRY_PRODUCTS" Name="Masło"/>
+  <Product ProductId="YOGURT" ProductCategoryId="DAIRY_PRODUCTS" Name="Jogurt"/>
+  <Product ProductId="EGGS" ProductCategoryId="DAIRY_PRODUCTS" Name="Jajka"/>
+  <Product ProductId="CHESSE" ProductCategoryId="DAIRY_PRODUCTS" Name="Ser żółty"/>
+  <Product ProductId="WHITE_CHESSE" ProductCategoryId="DAIRY_PRODUCTS" Name="Ser biały"/>
+  <Product ProductId="SOUR_CREAM" ProductCategoryId="DAIRY_PRODUCTS" Name="Śmietana"/>
+  <Product ProductId="CHOCOLATE" ProductCategoryId="CANDY" Name="Czekolada"/>
+  <Product ProductId="CANDY" ProductCategoryId="CANDY" Name="Cukierki"/>
+  <Product ProductId="JELLY_BEANS" ProductCategoryId="CANDY" Name="Żelki"/>
+  <Product ProductId="CHEWING_GUM" ProductCategoryId="CANDY" Name="Gumy do żucia"/>
+  <Product ProductId="SALT" ProductCategoryId="SPICES" Name="Sól"/>
+  <Product ProductId="PEPPER" ProductCategoryId="SPICES" Name="Pieprz"/>
+  <Product ProductId="MARJORAM" ProductCategoryId="SPICES" Name="Majeranek"/>
+  <Product ProductId="PAPRIKA_POWDER" ProductCategoryId="SPICES" Name="Papryka słodka"/>
+  <Product ProductId="CURRY_POWDER" ProductCategoryId="SPICES" Name="Curry"/>
+  <Product ProductId="BASIL_POWDER" ProductCategoryId="SPICES" Name="Bazylia"/>
+  <Product ProductId="BANANAS" ProductCategoryId="VEGETABLES_FRUITS" Name="Banany"/>
+  <Product ProductId="APPLES" ProductCategoryId="VEGETABLES_FRUITS" Name="Jabłka"/>
+  <Product ProductId="LETTUCE" ProductCategoryId="VEGETABLES_FRUITS" Name="Sałata"/>
+  <Product ProductId="CUCUMBERS" ProductCategoryId="VEGETABLES_FRUITS" Name="Ogórki"/>
+  <Product ProductId="TOMATOES" ProductCategoryId="VEGETABLES_FRUITS" Name="Pomidory"/>
+  <Product ProductId="POTATOES" ProductCategoryId="VEGETABLES_FRUITS" Name="Ziemniaki"/>
+  <Product ProductId="SCREWS" ProductCategoryId="TOOLS" Name="Śrubki"/>
+  <Product ProductId="HAMMER" ProductCategoryId="TOOLS" Name="Młotek"/>
+</Products>

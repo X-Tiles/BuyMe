@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ProductCategories>
+  <ProductCategory Id="1" Name="Ulubione" Icon="Favourite"/>
+  <ProductCategory Id="2" Name="Naczynia" Icon="Dishes"/>
+</ProductCategories>

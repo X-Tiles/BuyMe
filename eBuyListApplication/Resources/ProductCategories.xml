@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ProductCategories>
+  <ProductCategory ProductCategoryId="BREAD" Name="Pieczywo" Icon="Bread"/>
+  <ProductCategory ProductCategoryId="FOODSTUFFS" Name="Jedzenie" Icon="Food"/>
+  <ProductCategory ProductCategoryId="PHARMACY" Name="Apteka" Icon="Pharmacy"/>
+  <ProductCategory ProductCategoryId="OFFICE" Name="Artykuły biurowe" Icon="Office"/>
+  <ProductCategory ProductCategoryId="BOOKSTORE" Name="Ksiażki/Czasopisma" Icon="Bookstore"/>
+  <ProductCategory ProductCategoryId="AUTOMOTIVE" Name="Motoryzacja" Icon="Automotive"/>
+  <ProductCategory ProductCategoryId="RECREATION_SPORT" Name="Rekreacja/Sport" Icon="Recreation"/>
+  <ProductCategory ProductCategoryId="CLOTHES" Name="Ubrania" Icon="Clothes"/>
+  <ProductCategory ProductCategoryId="ANIMAL" Name="Dla zwierząt" Icon="Animal"/>
+  <ProductCategory ProductCategoryId="CHILDREN" Name="Dla dzieci" Icon="Children"/>
+  <ProductCategory ProductCategoryId="COSMETICS" Name="Kosmetyki" Icon="Cosmetics"/>
+  <ProductCategory ProductCategoryId="DRINKS" Name="Napoje" Icon="Drinks"/>
+  <ProductCategory ProductCategoryId="FROZEN" Name="Mrożonki" Icon="Frozen"/>
+  <ProductCategory ProductCategoryId="ALCOHOL_TOBACCO" Name="Alkohole/Tytoń" Icon="Alcohol"/>
+  <ProductCategory ProductCategoryId="SNACKS" Name="Słone" Icon="Snacks"/>
+  <ProductCategory ProductCategoryId="FISH_SEAFOOD" Name="Ryby/Owoce morza" Icon="Fish"/>
+  <ProductCategory ProductCategoryId="MEAT" Name="Mięso" Icon="Meat"/>
+  <ProductCategory ProductCategoryId="HOUSE_GARDEN" Name="Dom/Ogród" Icon="House"/>
+  <ProductCategory ProductCategoryId="CLEANING" Name="Środki czyszczące" Icon="Cleaning"/>
+  <ProductCategory ProductCategoryId="CANNED" Name="Konserwy" Icon="Canned"/>
+  <ProductCategory ProductCategoryId="DAIRY_PRODUCTS" Name="Nabiał" Icon="Dairy"/>
+  <ProductCategory ProductCategoryId="CANDY" Name="Słodycze" Icon="Candy"/>
+  <ProductCategory ProductCategoryId="SPICES" Name="Przyprawy" Icon="Spices"/>
+  <ProductCategory ProductCategoryId="VEGETABLES_FRUITS" Name="Owoce/Warzywa" Icon="Fruits"/>
+  <ProductCategory ProductCategoryId="TOOLS" Name="Narzędzia" Icon="Tools"/>
+  <ProductCategory ProductCategoryId="OTHER" Name="Inne" Icon="Other"/>
+  <ProductCategory ProductCategoryId="USER" Name="Własne" Icon="User"/>
+</ProductCategories>
