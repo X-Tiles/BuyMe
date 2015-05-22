@@ -32,6 +32,19 @@ namespace eBuyListApplication
 
             TitlePanel.DataContext = MainPage.Manager.GetListByIndex(SelectedListId());
             DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
+            
+            foreach(var item in DetailsLongListSelector.ItemsSource)
+            {
+                if ((item as ListProductItem).IsBought == true)
+                {
+                    
+                }
+                else
+                {
+ 
+                }
+            }
+
 
         }
 

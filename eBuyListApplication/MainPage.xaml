@@ -7,14 +7,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
+    Foreground="{StaticResource PhoneBackgroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True" Background="Black">
 
     <!--Data context is set to sample data above and LayoutRoot contains the root grid where all other page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="White">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/koszykBack.png"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -22,25 +26,27 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Background="#FFDEDEDE" >
+        <StackPanel Grid.Row="0">
             <TextBlock Text="BuyMe" 
-                       Style="{StaticResource PhoneTextNormalStyle}" 
-                       Foreground="Black"/>
+                       Style="{StaticResource PhoneTextTitle2Style}"  
+                       FontWeight="ExtraBold"
+                       Foreground="Black"
+                       />
             
             <TextBlock Text="twoje listy" 
                        Margin="9,-7,139,0" 
-                       Style="{StaticResource PhoneTextTitle1Style}" 
+                       Style="{StaticResource PhoneTextTitle1Style}"
                        Foreground="Black"/>
         </StackPanel>
         
         <!--Logo-->
         <StackPanel Grid.Row="0" Margin="321,0,0,0">
-            <Image Height="160" 
+            <!--<Image Height="160" 
                    Width="160" 
                    HorizontalAlignment="Right" 
-                   OpacityMask="White" Opacity="1" 
+                   OpacityMask="White" 
                    Source="/Assets/160x160.png">         
-            </Image>       
+            </Image>-->       
         </StackPanel>
         
         <!--Ukryte - dodaj listę textbox-->
@@ -55,75 +61,97 @@
         </StackPanel>
 
         <!--ContentPanel contains LongListSelector and LongListSelector ItemTemplate. Place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="2" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="2" Margin="12,12,12,0">
             
             <phone:LongListSelector x:Name="MainLongListSelector"
                                     Margin="0,0,-12,0" 
                                     ItemsSource="{Binding}" 
                                     SelectionChanged="MainLongListSelector_SelectionChanged"
-                                    Background="White">
+                                    LayoutMode="Grid"
+                                    GridCellSize="225,225"
+                                    >
 
                 <phone:LongListSelector.ItemTemplate>
                     
                     <DataTemplate>
-                        <StackPanel Margin="0,0,0,17">
+                        <Grid Margin="2,0,2,10">
                             
                           <toolkit:ContextMenuService.ContextMenu>
-                                <toolkit:ContextMenu Background="Black" IsZoomEnabled="True" Name="ContextMenu">
-                                    <toolkit:MenuItem x:Name="Edit" Foreground="White" Header="Edytuj" Click="Edit_OnClick" ></toolkit:MenuItem>
-                                    <toolkit:MenuItem x:Name="Delete" Foreground="White" Header="Usuń" Click="Delete_OnClick" ></toolkit:MenuItem>
-                                    <toolkit:MenuItem x:Name="Share" Foreground="White" Header="Wyślij sms" Click="Share_OnClickShare_OnClick" ></toolkit:MenuItem>
+                                <toolkit:ContextMenu Background="Black" 
+                                                     IsZoomEnabled="True" 
+                                                     Name="ContextMenu">
+                                    <toolkit:MenuItem x:Name="Edit" 
+                                                      Foreground="White" 
+                                                      Header="Edytuj" 
+                                                      Click="Edit_OnClick">
+                                        
+                                    </toolkit:MenuItem>
+                                    <toolkit:MenuItem x:Name="Delete" 
+                                                      Foreground="White" 
+                                                      Header="Usuń" 
+                                                      Click="Delete_OnClick" >
+                                        
+                                    </toolkit:MenuItem>
+                                    <toolkit:MenuItem x:Name="Share" 
+                                                      Foreground="White"
+                                                      Header="Wyślij sms"
+                                                      Click="Share_OnClickShare_OnClick" >
+                                        
+                                    </toolkit:MenuItem>
                                 </toolkit:ContextMenu>
                             </toolkit:ContextMenuService.ContextMenu>  
                       
-                            <StackPanel>
-                                
-                                <StackPanel Orientation="Horizontal">
-                                    
-                                    <TextBlock x:Name="ListTextBlock" 
+                            <Grid Background="#FF86879C" 
+                                  Margin="2,0,2,0" 
+                                  UseOptimizedManipulationRouting="True"
+                                  Opacity="0.93"
+                                  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock x:Name="ListTextBlock" 
                                            Text="{Binding Name}"
                                            TextWrapping="Wrap" 
-                                           Style="{StaticResource PhoneTextExtraLargeStyle}" 
+                                           Style="{StaticResource PhoneTextLargeStyle}" 
                                            Foreground="Black" 
-                                           Width="455" 
                                            HorizontalAlignment="Left" 
-                                           Margin="0,0,0,0"
-                                           />
-                                </StackPanel>
-                                <TextBlock Text="Do kupienia:" 
+                                           Margin="5,0,5,10"
+                                           Grid.Row="0"/>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                    <TextBlock Text="Do kupienia:" 
                                            Foreground="Red"  
                                            Style="{StaticResource PhoneTextSubtleStyle}" 
-                                           Width="113" 
-                                           HorizontalAlignment="Right" 
-                                           Margin="0,0,50,-40"/>
-                                <TextBlock Text="{Binding NumberOfProductsToBuy}"                                           
+                                           Margin="5,0,0,0"
+                                           />
+                                    <TextBlock Text="{Binding NumberOfProductsToBuy}"                                           
                                            TextWrapping="Wrap" 
-                                           Margin="130,0,0,0" 
+                                           Margin="5,0,0,0" 
                                            Style="{StaticResource PhoneTextSubtleStyle}" 
-                                           Foreground="Red" Width="40" 
-                                           HorizontalAlignment="right" 
-                                           RenderTransformOrigin="0.562,0.667"/>
+                                           Foreground="Red"
+                                           />
+                                </StackPanel>
+                                <StackPanel Grid.Row="2" Orientation="Horizontal">
                                 <TextBlock Text="Kupione:" 
                                            Foreground="Green" 
                                            Style="{StaticResource PhoneTextSubtleStyle}" 
-                                           Width="113" 
-                                           HorizontalAlignment="Right" 
-                                           Margin="0,0,50,-40"/>
+                                           Margin="5,0,0,0"
+                                           />
                                 <TextBlock Text="{Binding NumberOfBoughtProducts}" 
                                            TextWrapping="Wrap" 
-                                           Margin="130,0,0,0" 
+                                           Margin="5,0,0,0" 
                                            Style="{StaticResource PhoneTextSubtleStyle}" 
                                            Foreground="Green" 
-                                           Width="40" 
-                                           HorizontalAlignment="Right" 
-                                           RenderTransformOrigin="0.562,0.667"/>
-                            </StackPanel>
-                        </StackPanel>
+                                           />
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
                     </DataTemplate>
                 </phone:LongListSelector.ItemTemplate>
             </phone:LongListSelector>
-            <Image Height="93" Width="415" VerticalAlignment="Bottom" Source="Assets/200_owoc.png" HorizontalAlignment="Right" Margin="0,0,-110,0"  />
         </Grid>
+
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>

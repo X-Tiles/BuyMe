@@ -51,16 +51,18 @@
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="0,0,0,17">
+                            
                             <toolkit:ContextMenuService.ContextMenu>
                                 <toolkit:ContextMenu Background="White" IsZoomEnabled="True" Name="ProductsContextMenu">
                                     <toolkit:MenuItem x:Name="Edit" Foreground="Black" Header="Edytuj" Click="ProductEdit_OnClick"></toolkit:MenuItem>
                                     <toolkit:MenuItem x:Name="Delete" Foreground="Black" Header="Usuń" Click="ProductDelete_OnClick" ></toolkit:MenuItem>
                                 </toolkit:ContextMenu>
                             </toolkit:ContextMenuService.ContextMenu>
+                            
                                 <TextBlock x:Name="ProductTextBlock"
                                       Text="{Binding Name}"
                                       Style="{StaticResource PhoneTextExtraLargeStyle}"
-                                      Tap="ProductTextBlock_OnTap">
+                                      Tap="ProductTextBlock_OnTap" >
                                 </TextBlock>
                             <toolkit:ToggleSwitch x:Name="IsBoughtToogle" IsChecked="{Binding IsBought}" SwitchForeground="Green" Checked="IsBoughtToogle_OnChecked" Loaded="IsBoughtToogle_OnLoaded" Unchecked="IsBoughtToogle_OnUnchecked"  ></toolkit:ToggleSwitch>
                         </StackPanel>
