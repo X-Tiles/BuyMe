@@ -31,22 +31,12 @@ namespace eBuyListApplication
         {
 
             TitlePanel.DataContext = MainPage.Manager.GetListByIndex(SelectedListId());
+
             DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
-            
-            foreach(var item in DetailsLongListSelector.ItemsSource)
-            {
-                if ((item as ListProductItem).IsBought == true)
-                {
-                    
-                }
-                else
-                {
- 
-                }
-            }
 
 
         }
+
 
         private void ProductEdit_OnClick(object sender, RoutedEventArgs e)
         {
@@ -88,30 +78,6 @@ namespace eBuyListApplication
             DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
         }
 
-        private void IsBoughtToogle_OnLoaded(object sender, RoutedEventArgs e)
-        {
-
-            if ((sender as ToggleSwitch).IsChecked == true)
-            {
-                (sender as ToggleSwitch).Content = "Kupione";
-            }
-            else
-            {
-                (sender as ToggleSwitch).Content = "Do kupienia";
-            }
-        }
-
-        private void IsBoughtToogle_OnChecked(object sender, RoutedEventArgs e)
-        {
-               (sender as ToggleSwitch).Content = "Kupione";
-
-        }
-
-
-        private void IsBoughtToogle_OnUnchecked(object sender, RoutedEventArgs e)
-        {
-            (sender as ToggleSwitch).Content = "Do kupienia";
-        }
 
         private void AddProductAppBarIconButton_Click(object sender, EventArgs e)
         {
@@ -169,8 +135,7 @@ namespace eBuyListApplication
 
         }
 
-
-
+        #region HelperMethods
 
         private int SelectedListId()
         {
@@ -191,6 +156,8 @@ namespace eBuyListApplication
             ApplicationBarIconButton button = (ApplicationBarIconButton)ApplicationBar.Buttons[1];
             return button;
         }
+
+        #endregion
 
     }
 
