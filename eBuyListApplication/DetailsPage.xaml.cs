@@ -16,6 +16,8 @@ using Windows.Phone.UI.Input;
 using eBuyListApplication.Model;
 using Microsoft.Xna.Framework.Content;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
+using Windows.Phone.Speech.Recognition;
+using System.ComponentModel;
 
 namespace eBuyListApplication
 {
@@ -25,15 +27,20 @@ namespace eBuyListApplication
         public DetailsPage()
         {
             InitializeComponent();
+
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
 
-            TitlePanel.DataContext = MainPage.Manager.GetListByIndex(SelectedListId());
+            PanoramaMain.DataContext = MainPage.Manager.GetListByIndex(SelectedListId());
 
             DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
 
+            TitlePanel.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Name;
+
+            //CategoriesProductsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
 
         }
 
@@ -74,40 +81,34 @@ namespace eBuyListApplication
                 MainPage.Manager.ChangeProductState(SelectedListId(), productToBuy, true);
             }
 
+            
             DetailsLongListSelector.DataContext = null;
             DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
         }
 
 
         private void AddProductAppBarIconButton_Click(object sender, EventArgs e)
-        {
+        { 
             SearchAutoCompleteBox.Text = "";
 
             SearchAutoCompleteBox.Height = 80;
             SearchAutoCompleteBox.BorderBrush = new SolidColorBrush(Colors.Black);
             SearchAutoCompleteBox.FontSize = 30;
-
+         
             SearchAutoCompleteBox.Focus();
+            TitlePanel.Opacity = 0.15;
             SearchAutoCompleteBox.Visibility = Visibility.Visible;
-            TitlePanel.Visibility = System.Windows.Visibility.Collapsed;
             AddBarButton().IsEnabled = false;
             ContentPanel.Opacity = 0.15;
+
+
         }
 
         private void ConfirmAddingProductAppBarIconButton_Click(object sender, EventArgs e)
         {
 
-            if (SearchAutoCompleteBox.SelectedItem != null)
-            {
+            MainPage.Manager.AddNewProductToList(SelectedListId(), SearchAutoCompleteBox.Text);
 
-                MainPage.Manager.AddNewProductToList(SelectedListId(), SearchAutoCompleteBox.SelectedItem.ToString());
-            }
-
-            else
-            {
-                MainPage.Manager.AddNewProductToList(SelectedListId(), SearchAutoCompleteBox.Text);
-
-            }
 
             DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
             SearchAutoCompleteBox.Visibility = Visibility.Collapsed;
@@ -116,15 +117,25 @@ namespace eBuyListApplication
             ConfirmBarButton().IsEnabled = false;
             AddBarButton().IsEnabled = true;
             ContentPanel.Opacity = 1;
+            TitlePanel.Opacity = 1;
+
+            DetailsLongListSelector.DataContext = null;
+            DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
         }
 
         private void SearchAutoCompleteBox_TextChanged(object sender, RoutedEventArgs e)
         {
+            if (SearchAutoCompleteBox.SelectedItem != null)
+            {
+                return;            
+            }
+
             SearchAutoCompleteBox.ItemsSource = Products.GetProductsByNamePattern(SearchAutoCompleteBox.Text);
 
             if (SearchAutoCompleteBox.Text != "")
             {
                 ConfirmBarButton().IsEnabled = true;
+                
             }
 
             else
@@ -134,6 +145,78 @@ namespace eBuyListApplication
 
 
         }
+
+        //TODO
+        private void PanoramaMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        //TODO
+        private void SpeechToTextButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            //TODO Speech recognition
+            //try
+            //{
+
+            //    SpeechRecognizer reco = new SpeechRecognizer();
+
+
+
+            //    reco.Settings.InitialSilenceTimeout = TimeSpan.FromSeconds(1);
+            //    reco.Settings.EndSilenceTimeout = TimeSpan.FromSeconds(5);
+
+            //    SpeechRecognitionResult recoResult = await reco.RecognizeAsync();
+
+            //    SearchAutoCompleteBox.Text = recoResult.Text;
+            //}
+
+            //catch (System.Threading.Tasks.TaskCanceledException)
+            //{
+
+
+            //}
+
+            //catch (Exception err)
+            //{
+            //    const int privacyPolicyHResult = unchecked((int)0x80045509);
+
+            //    if (err.HResult == privacyPolicyHResult)
+            //    {
+            //        MessageBox.Show("To run this sample, you must first accept the speech privacy policy. To do so, navigate to Settings -> speech on your phone and check 'Enable Speech Recognition Service' ");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show(String.Format("An error occurred: {0}", err.Message));
+            //    } 
+            //}
+        }
+
+        //Wynik błędu w kontrolce Auto Complete Box
+        private void SearchAutoCompleteBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+
+
+        private void ClearBoughtApplicationBarMenuItem_Click(object sender, EventArgs e)
+        {
+            MainPage.Manager.GetListByIndex(SelectedListId()).RemoveCheckedProducts();
+
+            DetailsLongListSelector.DataContext = null;
+            DetailsLongListSelector.DataContext = MainPage.Manager.GetListByIndex(SelectedListId()).Products;
+        }
+
+        //TODO
+        private void SortApplicationBarMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+
 
         #region HelperMethods
 
@@ -158,6 +241,27 @@ namespace eBuyListApplication
         }
 
         #endregion
+
+
+        //BackButton override
+        protected override void OnBackKeyPress(CancelEventArgs e)
+        {
+            // put any code you like here
+            if (SearchAutoCompleteBox.Visibility != System.Windows.Visibility.Visible)
+            {
+
+            }
+            else
+            {
+                SearchAutoCompleteBox.Visibility = System.Windows.Visibility.Collapsed;
+                TitlePanel.Opacity = 1;
+                ContentPanel.Opacity = 1;
+                AddBarButton().IsEnabled = true;
+                e.Cancel = true;
+            }
+        }
+
+
 
     }
 

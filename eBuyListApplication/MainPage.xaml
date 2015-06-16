@@ -25,39 +25,29 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!--Ukryte - dodaj listę textbox-->
+        <StackPanel Grid.Row="0" 
+                    x:Name="GridForAddListTextBox" 
+                    Margin="0,0,0,0">
+            <TextBox x:Name="AddNewListTextBox" 
+                     Visibility="Collapsed"
+                     TextChanged="AddNewListTextBox_TextChanged">
+
+            </TextBox>
+        </StackPanel>
+
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="1">
             <TextBlock Text="BuyMe" 
                        Style="{StaticResource PhoneTextTitle2Style}"  
                        FontWeight="ExtraBold"
                        Foreground="Black"
                        />
             
-            <TextBlock Text="twoje listy" 
+            <TextBlock Text="Twoje listy" 
                        Margin="9,-7,139,0" 
                        Style="{StaticResource PhoneTextTitle1Style}"
                        Foreground="Black"/>
-        </StackPanel>
-        
-        <!--Logo-->
-        <StackPanel Grid.Row="0" Margin="321,0,0,0">
-            <!--<Image Height="160" 
-                   Width="160" 
-                   HorizontalAlignment="Right" 
-                   OpacityMask="White" 
-                   Source="/Assets/160x160.png">         
-            </Image>-->       
-        </StackPanel>
-        
-        <!--Ukryte - dodaj listę textbox-->
-        <StackPanel Grid.Row="1" 
-                    x:Name="GridForAddListTextBox" 
-                    Margin="0,0,0,0">       
-            <TextBox x:Name="AddNewListTextBox" 
-                     Visibility="Collapsed"
-                     TextChanged="AddNewListTextBox_TextChanged">
-                
-            </TextBox>
         </StackPanel>
 
         <!--ContentPanel contains LongListSelector and LongListSelector ItemTemplate. Place additional content here-->

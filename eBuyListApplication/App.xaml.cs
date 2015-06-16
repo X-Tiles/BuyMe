@@ -8,6 +8,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using eBuyListApplication.Resources;
 
+
 namespace eBuyListApplication
 {
     public partial class App : Application
@@ -122,6 +123,7 @@ namespace eBuyListApplication
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         { 
+            
         }
 
         // Code to execute if a navigation fails

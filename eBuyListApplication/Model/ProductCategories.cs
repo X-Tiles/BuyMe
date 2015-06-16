@@ -149,10 +149,10 @@ namespace eBuyListApplication.Model
 
         public BitmapImage GetCategoryIconByCategoryId(ProductCategoryIds categoryId)
         {
-            if (_categories == null)
+            if (_standardCategories == null)
                 return null;
 
-            foreach (var category in _categories)
+            foreach (var category in _standardCategories.GetAllCategories())
             {
                 if (category.CategoryId == categoryId)
                 {

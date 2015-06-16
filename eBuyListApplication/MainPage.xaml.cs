@@ -8,6 +8,7 @@ using Microsoft.Phone.Controls;
 using eBuyListApplication.Model;
 using Microsoft.Phone.Tasks;
 using Microsoft.Phone.Shell;
+using System.ComponentModel;
 
 namespace eBuyListApplication
 {
@@ -92,6 +93,7 @@ namespace eBuyListApplication
             ChangeListName = (list as EBuyList);
             AddTextBoxForAddingNewList();
             AddBarButton().IsEnabled = false;
+            GridForAddListTextBox.Visibility = System.Windows.Visibility.Visible;
 
         }
 
@@ -112,9 +114,11 @@ namespace eBuyListApplication
             var sms = new SmsComposeTask();
             var myListToSend = (sender as MenuItem).DataContext;
 
-            var myProductsOnList = (myListToSend as EBuyList).Products;
 
-            var smsListBody = myProductsOnList.Aggregate("Twoja lista skarbie:" + "\n", (current, item) => current + (item + "\n"));
+
+            var myProductsOnList = (myListToSend as EBuyList).GetProductsByCheckState(false);
+
+            var smsListBody = myProductsOnList.Aggregate("Do kupienia:" + "\n", (current, item) => current + (item + "\n"));
 
             sms.Body = smsListBody;
             sms.Show();
@@ -161,5 +165,23 @@ namespace eBuyListApplication
         }
 
         #endregion
+
+        //BackButton
+        protected override void OnBackKeyPress(CancelEventArgs e)
+        {
+            // put any code you like here
+            if (GridForAddListTextBox.Visibility != System.Windows.Visibility.Visible)
+            {
+
+            }
+            else
+            {
+                GridForAddListTextBox.Visibility = System.Windows.Visibility.Collapsed;
+                AddBarButton().IsEnabled = true;
+                ContentPanel.Opacity = 1;
+                e.Cancel = true;
+            }
+        }
+          
     }
 }

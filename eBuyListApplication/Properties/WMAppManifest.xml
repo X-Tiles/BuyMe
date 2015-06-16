@@ -1,14 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
-  <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{2bff32b6-15f0-4d40-b0c5-03bf7dfcd1fb}" Title="eBuyListApplication" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="eBuyListApplication author" Description="Sample description" SDOptOut="false" BackUpOptOut="false" Publisher="eBuyListApplication" PublisherID="{5f513f54-e700-499b-814a-d467bd5ee5b2}">
-    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
+  <DefaultLanguage xmlns="" code="pl-PL" />
+  <Languages xmlns="">
+    <Language code="pl-PL" />
+    <Language code="en-US" />
+  </Languages>
+  <App xmlns="" ProductID="{2bff32b6-15f0-4d40-b0c5-03bf7dfcd1fb}" Title="BuyMe" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="eBuyListApplication author" Description="Sample description" SDOptOut="false" BackUpOptOut="false" Publisher="eBuyListApplication" PublisherID="{5f513f54-e700-499b-814a-d467bd5ee5b2}">
+    <IconPath IsRelative="true" IsResource="false">Assets\160x160.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
       <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
       <Capability Name="ID_CAP_SENSORS" />
       <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+      <Capability Name="ID_CAP_MICROPHONE" />
+      <Capability Name="ID_CAP_SPEECH_RECOGNITION" />
+      <Capability Name="ID_CAP_GAMERSERVICES" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" ActivationPolicy="Resume" />
@@ -16,9 +23,9 @@
     <Tokens>
       <PrimaryToken TokenID="eBuyListApplicationToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\160x160.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\160x160.png</BackgroundImageURI>
           <Title>eBuyListApplication</Title>
           <BackContent>
           </BackContent>
@@ -26,10 +33,13 @@
           </BackBackgroundImageURI>
           <BackTitle>
           </BackTitle>
+          <LargeBackgroundImageURI IsRelative="true" IsResource="false">Assets\160x160.png</LargeBackgroundImageURI>
+          <LargeBackContent />
+          <LargeBackBackgroundImageURI IsRelative="true" IsResource="false">
+          </LargeBackBackgroundImageURI>
           <DeviceLockImageURI>
           </DeviceLockImageURI>
-          <HasLarge>
-          </HasLarge>
+          <HasLarge>True</HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>

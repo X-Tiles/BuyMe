@@ -124,6 +124,9 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="ValueConverters\IsBoughtToFontStyleConverter.cs" />
+    <Compile Include="ValueConverters\IsBoughtToForegroundConverter.cs" />
+    <Compile Include="ValueConverters\ProductToCategoryImagePathConverter.cs" />
+    <Compile Include="ValueConverters\ProductToCategoryNameConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -165,6 +168,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\BadgeLogo.png" />
+    <Content Include="Assets\EggBack2304x1920.png" />
     <Content Include="Assets\koszykBack.png" />
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\SplashScreen.png" />

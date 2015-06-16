@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:valueconverter="clr-namespace:eBuyListApplication.ValueConverters"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -18,78 +19,165 @@
 
     <phone:PhoneApplicationPage.Resources>
         <valueconverter:IsBoughtToFontStyleConverter x:Key="IsBoughtToFontStyleConverter"></valueconverter:IsBoughtToFontStyleConverter>
+        <valueconverter:IsBoughtToForegroundConverter x:Key="IsBoughtToForegrundConverter"></valueconverter:IsBoughtToForegroundConverter>
+        <valueconverter:ProductToCategoryImagePathConverter x:Key="ProductToCategoryImagePathConverter"></valueconverter:ProductToCategoryImagePathConverter>
+        <valueconverter:ProductToCategoryNameConverter x:Key="ProductToCategoryNameConverter"></valueconverter:ProductToCategoryNameConverter>
     </phone:PhoneApplicationPage.Resources>
 
 
 <!--Data context is set to sample data above and first item in sample data collection below and LayoutRoot contains the root grid where all other page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent" d:DataContext="{Binding Items[0]}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <controls:Panorama x:Name="PanoramaMain" SelectionChanged="PanoramaMain_SelectionChanged">
+        <controls:PanoramaItem x:Name="ProductViewPanoramaMain" >
+            
+            <Grid x:Name="LayoutRoot" Background="Transparent" d:DataContext="{Binding Items[0]}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="BUYME" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="{Binding Name}"
-                       Margin="9,-7,0,0" 
-                       Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
-        <!--Ukryte - dodaj produkt textbox-->
-        <StackPanel Grid.Row="1" 
+            <!--Ukryte - dodaj produkt textbox-->
+                <Grid Grid.Row="0" 
                     x:Name="GridForAddListTextBox" 
                     Margin="0,0,0,0">
-            <toolkit:AutoCompleteBox Visibility="Collapsed"
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="80"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <toolkit:AutoCompleteBox Visibility="Collapsed"
                                      ValueMemberBinding="{Binding Name}"
                                      x:Name="SearchAutoCompleteBox" 
                                      TextChanged="SearchAutoCompleteBox_TextChanged"
-                                     IsTextCompletionEnabled="True">
-            </toolkit:AutoCompleteBox>
-        </StackPanel>
+                                     SelectionChanged="SearchAutoCompleteBox_SelectionChanged"
+                                     IsTextCompletionEnabled="False"
+                                     Width="450"
+                                     Grid.Column="0">
+                    </toolkit:AutoCompleteBox>
+                    <Button Visibility="Collapsed"
+                            Width="80"
+                            Height="80"
+                            HorizontalAlignment="Right"
+                            Click="SpeechToTextButton_Click"
+                            Grid.Column="1"></Button>
+                </Grid>
+                <!--TitlePanel contains the name of the application and page title-->
+                <StackPanel x:Name="TitlePanel" 
+                            Grid.Row="1" >
+                    <TextBlock Text="{Binding}"
+                               Margin="9,-7,0,20" 
+                               Style="{StaticResource PhoneTextTitle1Style}"/>
+                </StackPanel>
 
-        <!--ContentPanel contains details text. Place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="2" Margin="12,0,12,0">
-            <phone:LongListSelector x:Name="DetailsLongListSelector" 
-                                    Margin="0,0,-12,0" 
-                                    Background="Black" 
+                <!--ContentPanel contains details text. Place additional content here-->
+                <Grid x:Name="ContentPanel" Grid.Row="2" Margin="0,0,0,0" Height="551" VerticalAlignment="Bottom">
+                    <phone:LongListSelector x:Name="DetailsLongListSelector" 
+                                    Margin="0,0,0,0" 
+                                    Background="Transparent" 
                                     ItemsSource="{Binding}">
-                <phone:LongListSelector.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="0,0,0,17">
-                            
-                            <toolkit:ContextMenuService.ContextMenu>
-                                <toolkit:ContextMenu Background="White" IsZoomEnabled="True" Name="ProductsContextMenu">
-                                    <toolkit:MenuItem x:Name="Edit" Foreground="Black" Header="Edytuj" Click="ProductEdit_OnClick"></toolkit:MenuItem>
-                                    <toolkit:MenuItem x:Name="Delete" Foreground="Black" Header="Usuń" Click="ProductDelete_OnClick" ></toolkit:MenuItem>
-                                </toolkit:ContextMenu>
-                            </toolkit:ContextMenuService.ContextMenu>
-                            <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*"></RowDefinition>
-                                    <RowDefinition Height="1*"></RowDefinition>
-                                </Grid.RowDefinitions>    
-                            
-                            <TextBlock Text="{Binding Name}"
-                                       Style="{StaticResource PhoneTextExtraLargeStyle}"
-                                       TextDecorations="{Binding Converter={StaticResource IsBoughtToFontStyleConverter}}"
-                                       Tap="ProductTextBlock_OnTap"
-                                       Grid.RowSpan="2">
-                            </TextBlock>
-                            <Border BorderThickness="0,0,0,5" 
-                                    BorderBrush="White"
-                                    Visibility="{Binding Converter={StaticResource IsBoughtToFontStyleConverter}}">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,22">
+
+                                    <toolkit:ContextMenuService.ContextMenu>
+                                        <toolkit:ContextMenu Background="White" IsZoomEnabled="True" Name="ProductsContextMenu">
+                                            <toolkit:MenuItem x:Name="Edit" Foreground="Black" Header="Edytuj" Click="ProductEdit_OnClick"></toolkit:MenuItem>
+                                            <toolkit:MenuItem x:Name="Delete" Foreground="Black" Header="Usuń" Click="ProductDelete_OnClick" ></toolkit:MenuItem>
+                                        </toolkit:ContextMenu>
+                                    </toolkit:ContextMenuService.ContextMenu>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="80"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                    <Grid HorizontalAlignment="Left" 
+                                          VerticalAlignment="Top" 
+                                          Grid.Column="0"
+                                          Margin="20,10,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                            <RowDefinition Height="1*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Text="{Binding Name}"
+                                                   Style="{StaticResource PhoneTextLargeStyle}"
+                                                   TextDecorations="{Binding Converter={StaticResource IsBoughtToFontStyleConverter}}"
+                                                   Tap="ProductTextBlock_OnTap"
+                                                   Grid.RowSpan="2"
+                                                   Opacity="{Binding Converter={StaticResource IsBoughtToForegrundConverter}}"
+                                                   TextWrapping="Wrap"
+                                                   Margin="0,0,45,10">
+                                        </TextBlock>
+                                        <Border BorderThickness="0,0,0,5" 
+                                                BorderBrush="White"
+                                                Opacity="{Binding Converter={StaticResource IsBoughtToForegrundConverter}}"
+                                                Visibility="{Binding Converter={StaticResource IsBoughtToFontStyleConverter}}">
+
+                                        </Border>
+                                    </Grid>
+                                    <Grid HorizontalAlignment="Right"
+                                          Grid.Column="1">
+                                        <Image Source="{Binding Converter={StaticResource ProductToCategoryImagePathConverter}}"
+                                               Width="70"
+                                               Margin="0,0,0,0">
+                                        </Image>
+                                    </Grid>
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </Grid>
+
+                
+                
+            </Grid>
+
+            
+        </controls:PanoramaItem>
+        
+        
+        
+        <!--<controls:PanoramaItem>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel x:Name="CategoriesTitle" Grid.Row="0">
+                    <TextBlock Text="Kategorie"
+                               Style="{StaticResource PhoneTextTitle1Style}"/>
+                </StackPanel>
+                <Grid Grid.Row="1">
+                    <phone:LongListSelector x:Name="CategoriesProductsLongListSelector"
+                                            ItemsSource="{Binding}">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Converter={StaticResource ProductToCategoryNameConverter}}" 
+                                               Style="{StaticResource PhoneTextLargeStyle}">
+                                        
+                                    </TextBlock>
+
+                                </StackPanel>
                                 
-                            </Border>
-                            </Grid>
+                            </DataTemplate>
+                            
+                        </phone:LongListSelector.ItemTemplate>
+                        
+                    </phone:LongListSelector>
+                    
+                    
+                </Grid>
 
-                        </StackPanel>
-                    </DataTemplate>
-                </phone:LongListSelector.ItemTemplate>
-            </phone:LongListSelector>
-        </Grid>
-
-    </Grid>
+            </Grid>
+        </controls:PanoramaItem>-->
+        
+        
+   
+        
+        
+    </controls:Panorama>
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
@@ -100,7 +188,12 @@
                                             Text="zatwierdź" 
                                             Click="ConfirmAddingProductAppBarIconButton_Click" 
                                             IsEnabled="False"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="Sortuj" Click="SortApplicationBarMenuItem_Click"/>
+                <shell:ApplicationBarMenuItem Text="Wyczyść kupione" Click="ClearBoughtApplicationBarMenuItem_Click"/>
+            </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
+        
     </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>
